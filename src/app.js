@@ -58,8 +58,8 @@ const swagger = require('./config/swagger')
 // Register Swagger
 fastify.register(require('fastify-swagger'), swagger.options)
 
-fastify.register(require('./middleware/auth_middleware'))
-fastify.register(require('./router/router'));
+// fastify.register(require('./middleware/auth_middleware'))
+// fastify.register(require('./router/router'));
 
 // Import Routes
 const routes = require('./routes/routes.js')
