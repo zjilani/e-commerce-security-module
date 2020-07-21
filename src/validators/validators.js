@@ -31,7 +31,7 @@ exports.validateOtpVerification = function (req, res, done) {
 exports.validateUpdateCustomerRequest = async function (req, res, done) {
     try {
         const customerId = await req.jwtVerify()
-        const check = await axios.get('http://127.0.0.1:3000/getCustomer?customerId='+customerId)
+        const check = await axios.get('https://jilani-e-commerce-customer.herokuapp.com/getCustomer?customerId='+customerId)
         if(!check){
             res.code(400)
             done(new HttpError('faliure', 20001, 'Unathorised User !!!'))

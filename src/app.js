@@ -47,7 +47,7 @@ fastify.register(require('fastify-cors'),{
 })
 
 fastify.register(require('fastify-jwt'),{
-  secret: "myecommerceproject"
+  secret: process.env.SECRET
 })
 // Register fastify axios
 fastify.register(require('fastify-axios'))
@@ -58,8 +58,6 @@ const swagger = require('./config/swagger')
 // Register Swagger
 fastify.register(require('fastify-swagger'), swagger.options)
 
-// fastify.register(require('./middleware/auth_middleware'))
-// fastify.register(require('./router/router'));
 
 // Import Routes
 const routes = require('./routes/routes.js')
@@ -97,12 +95,15 @@ fastify.setErrorHandler(function (error, request, reply) {
 
 // Run the server!
 appconfig = config.server
-fastify.listen(appconfig.port, function (err, address) {
+const PORT = process.env.PORT || 5001
+const host = '0.0.0.0';
+
+fastify.listen(PORT,host, function (err, address) {
   if (err) {  
     fastify.log.error(err)
     process.exit(1)
   } else {
     // fastify.swagger()
-    fastify.log.info(`server listening on ${fastify.server.address().port}`)
+    fastify.log.info(`server listening on ${PORT}`)
   }
 });
