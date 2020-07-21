@@ -47,7 +47,7 @@ fastify.register(require('fastify-cors'),{
 })
 
 fastify.register(require('fastify-jwt'),{
-  secret: process.env.SECRET
+  secret: 'myecommerceproject'
 })
 // Register fastify axios
 fastify.register(require('fastify-axios'))
